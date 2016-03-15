@@ -1,0 +1,25 @@
+<%= form_for @species, url: species_index_path do |f| %>
+  <% if @species.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@species.errors.count, "error") %> prohibited this species from being saved:</h2>
+
+      <ul>
+      <% @species.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :latin_name %><br>
+    <%= f.text_field :latin_name %>
+  </div>
+  <div class="field">
+    <%= f.label :canonical_name %><br>
+    <%= f.text_field :canonical_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

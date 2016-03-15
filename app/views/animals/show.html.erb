@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @animal.name %>
+</p>
+
+<% unless @enclosure.blank? %>
+	<p>
+	  <strong>Enclosure:</strong>
+	  <%= link_to "#{@enclosure.enclosure_number} (#{@enclosure.enclosure_type})", enclosure_path(@enclosure) %>
+	</p>
+<% end %>
+
+<% unless @specie.blank? %>
+	<p>
+	  <strong>Specie:</strong>
+	  <%= link_to "#{@specie.canonical_name} (#{@specie.latin_name})", species_path(@specie) %>
+	</p>
+<% end %>
+
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>

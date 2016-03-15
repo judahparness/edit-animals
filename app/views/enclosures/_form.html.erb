@@ -1,0 +1,39 @@
+<%= form_for(@enclosure) do |f| %>
+  <% if @enclosure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enclosure.errors.count, "error") %> prohibited this enclosure from being saved:</h2>
+
+      <ul>
+      <% @enclosure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :enclosure_number %><br>
+    <%= f.number_field :enclosure_number %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :enclosure_type %><br>
+    <%= f.text_field :enclosure_type %>
+  </div>
+
+  <div class="field">
+    <label for="animal_id">Animal</label><br>
+    <select name="animal_enclosure[animal_id]" id="animal_enclosure_animal_id">
+      <option value=""></option>
+      <% Animal.all.each do |a| %>
+        <option value="<%= a.id %>">
+          <%= a.name %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

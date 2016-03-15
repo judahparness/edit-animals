@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @enclosure.enclosure_number %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @enclosure.enclosure_type %>
+</p>
+
+<% unless @animal_enclosure.blank? %>
+	<h1>
+		<%= "Animals in Enclosure #{@enclosure.enclosure_number} (#{@enclosure.enclosure_type})" %>
+	</h1>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @animal_enclosure.each do |ae| %>
+	      <tr>
+	        <td><%= ae.animal.id %></td>
+	        <td><%= link_to ae.animal.name, animal_path(ae.animal.id) %></td>
+	        <td><%= link_to 'Show', animal_path(ae.animal) %></td>
+	        <td><%= link_to 'Edit', edit_animal_path(ae.animal) %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<%= link_to 'Edit', edit_enclosure_path(@enclosure) %> |
+<%= link_to 'Back', enclosures_path %>

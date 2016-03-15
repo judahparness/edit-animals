@@ -1,0 +1,44 @@
+<% content_for :header do %>
+<% end %>
+
+<section>
+	<h2>
+		<%= link_to "Animals", animals_path %>
+	</h2>
+	<%= "Showing #{pluralize(@animal_count, 'animals')}" %> - <%= link_to "Add", new_animal_path %>
+
+	<% @animals.each do |animal| %>
+		<p>
+			<%= link_to animal.name, animal_path(animal) %>
+		</p>
+	<% end %>
+</section>
+
+<section>
+	<h2>
+		<%= link_to "Enclosures", enclosures_path %>
+	</h2>
+	<%= "Showing #{pluralize(@enclosure_count, 'enclosure')}" %> - <%= link_to "Add", new_enclosure_path %>
+
+	<% @enclosures.each do |enclosure| %>
+		<p>
+			<%= link_to "#{enclosure.enclosure_number} (#{enclosure.enclosure_type})", enclosure_path(enclosure) %>
+		</p>
+	<% end %>
+</section>
+
+<section>
+	<h2>
+		<%= link_to "Species", species_index_path %>
+	</h2>
+	<%= "Showing #{pluralize(@species_count, 'specie')}" %> - <%= link_to "Add", new_species_path %>
+
+	<% @species.each do |specie| %>
+		<p>
+			<%= link_to "#{specie.canonical_name} (#{specie.latin_name})", species_path(specie) %>
+		</p>
+	<% end %>
+</section>
+
+<% content_for :footer do %>
+<% end %>

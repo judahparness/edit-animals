@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Species</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Latin name</th>
+      <th>Canonical name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @species.each do |species| %>
+      <tr>
+        <td><%= species.latin_name %></td>
+        <td><%= species.canonical_name %></td>
+        <td><%= link_to 'Show', species %></td>
+        <td><%= link_to 'Edit', edit_species_path(species) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Specie', new_species_path %>

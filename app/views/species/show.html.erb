@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Latin name:</strong>
+  <%= @species.latin_name %>
+</p>
+
+<p>
+  <strong>Canonical name:</strong>
+  <%= @species.canonical_name %>
+</p>
+
+<% unless @animals.blank? %>
+	<h1>
+		<%= "Animals in classification #{@species.canonical_name} (#{@species.latin_name})" %>
+	</h1>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Name</th>
+	      <th colspan="3"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <% @animals.each do |a| %>
+	      <tr>
+	        <td><%= a.id %></td>
+	        <td><%= link_to a.name, animal_path(a.id) %></td>
+	        <td><%= link_to 'Show', animal_path(a) %></td>
+	        <td><%= link_to 'Edit', edit_animal_path(a) %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<%= link_to 'Edit', edit_species_path(@species) %> |
+<%= link_to 'Back', species_index_path %>

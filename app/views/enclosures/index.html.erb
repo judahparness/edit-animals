@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Enclosures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enclosures.each do |enclosure| %>
+      <tr>
+        <td><%= enclosure.enclosure_number %></td>
+        <td><%= enclosure.enclosure_type %></td>
+        <td><%= link_to 'Show', enclosure %></td>
+        <td><%= link_to 'Edit', edit_enclosure_path(enclosure) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enclosure', new_enclosure_path %>
